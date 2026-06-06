@@ -13,13 +13,26 @@ export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
 
+    // Formspree AJAX submission — see https://help.formspree.io/hc/en-us/articles/360013470814
+    const formspreePayload = {
+      vorname: body.vorname,
+      nachname: body.nachname,
+      email: body.email,
+      telefon: body.telefon ?? "",
+      thema: body.thema,
+      nachricht: body.nachricht ?? "",
+      _subject: `Kontaktanfrage: ${body.thema}`,
+      _replyto: body.email,
+      name: `${body.vorname} ${body.nachname}`,
+    };
+
     const response = await fetch(endpoint, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-      body: JSON.stringify(body),
+      body: JSON.stringify(formspreePayload),
     });
 
     if (!response.ok) {

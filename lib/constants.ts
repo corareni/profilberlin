@@ -7,6 +7,8 @@ import type {
   WhyUsItem,
 } from "./types";
 
+export const FORMSPREE_ENDPOINT = "https://formspree.io/f/xojzeqql";
+
 export const COMPANY = {
   name: "Profil Vermögensmanagement GmbH",
   shortName: "Profil Vermögensmanagement",
