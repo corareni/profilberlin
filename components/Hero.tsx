@@ -86,7 +86,7 @@ export default function Hero() {
               </span>
               <span
                 className={`font-extrabold leading-none tracking-[-0.04em] text-beige-200/[0.08] ${
-                  stat.number === "14057" ? "text-[1.9rem]" : "text-[2.8rem]"
+                  stat.number === "10707" ? "text-[1.9rem]" : "text-[2.8rem]"
                 }`}
                 aria-hidden="true"
               >

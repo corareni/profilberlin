@@ -12,8 +12,8 @@ export const FORMSPREE_ENDPOINT = "https://formspree.io/f/xojzeqql";
 export const COMPANY = {
   name: "Profil Vermögensmanagement GmbH",
   shortName: "Profil Vermögensmanagement",
-  address: "Riehlstraße 3",
-  city: "14057 Berlin",
+  address: "Sächsische Str. 62",
+  city: "D-10707 Berlin",
   email: "info@profilberlin.de",
   website: "www.profilberlin.de",
   url: "https://www.profilberlin.de",
@@ -40,7 +40,7 @@ export const TRUST_STATS: TrustStat[] = [
 export const HERO_STATS: TrustStat[] = [
   { number: "25+", label: "Jahre Erfahrung im Markt" },
   { number: "100%", label: "Unabhängig & provisionsfrei" },
-  { number: "14057", label: "Standort Berlin" },
+  { number: "10707", label: "Standort Berlin" },
 ];
 
 export const PHILOSOPHY_VALUES = [

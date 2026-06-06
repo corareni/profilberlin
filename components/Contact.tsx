@@ -116,7 +116,7 @@ export default function Contact() {
           <div className="relative h-[180px] overflow-hidden border border-beige-400">
             <iframe
               title="Standort Profil Vermögensmanagement GmbH"
-              src="https://maps.google.com/maps?q=Riehlstra%C3%9Fe+3,+14057+Berlin&output=embed"
+              src="https://maps.google.com/maps?q=S%C3%A4chsische+Stra%C3%9Fe+62,+10707+Berlin&output=embed"
               className="h-full w-full border-0 grayscale"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"

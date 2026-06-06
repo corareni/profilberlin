@@ -11,16 +11,8 @@ import { cn } from "@/lib/utils";
 const SECTION_IDS = ["philosophie", "leistungen", "ansatz", "faq", "kontakt"];
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("");
   const [mobileOpen, setMobileOpen] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   useEffect(() => {
     const observers: IntersectionObserver[] = [];
@@ -57,15 +49,10 @@ export default function Navbar() {
   return (
     <>
       <nav
-        className={cn(
-          "fixed left-0 right-0 top-0 z-[200] flex h-[68px] items-center justify-between px-6 transition-colors duration-300 md:px-14",
-          scrolled
-            ? "border-b border-white/[0.06] bg-forest-800/97 backdrop-blur-[14px]"
-            : "border-b border-beige-400 bg-beige-200/96 backdrop-blur-[14px]"
-        )}
+        className="fixed left-0 right-0 top-0 z-[200] flex h-[68px] items-center justify-between border-b border-beige-200/20 bg-forest-900 px-6 shadow-[0_2px_12px_rgba(7,21,16,0.35)] md:px-14"
         aria-label="Hauptnavigation"
       >
-        <LogoMark dark={scrolled} />
+        <LogoMark dark showText />
 
         <ul className="hidden items-center gap-8 md:flex">
           {NAV_LINKS.map((link) => (
@@ -74,13 +61,9 @@ export default function Navbar() {
                 href={link.href}
                 className={cn(
                   "nav-link",
-                  scrolled
-                    ? activeSection === link.id
-                      ? "text-beige-100"
-                      : "text-beige-200/90 hover:text-beige-100"
-                    : activeSection === link.id
-                      ? "text-forest-800"
-                      : "text-ink/85 hover:text-forest-800"
+                  activeSection === link.id
+                    ? "text-beige-100"
+                    : "text-beige-200 hover:text-beige-50"
                 )}
               >
                 {link.label}
@@ -90,12 +73,7 @@ export default function Navbar() {
           <li>
             <Link
               href="#kontakt"
-              className={cn(
-                "nav-link border-[1.5px] px-[1.4rem] py-2 transition-all",
-                scrolled
-                  ? "border-forest-300 text-beige-100 hover:bg-forest-600 hover:text-beige-50"
-                  : "border-forest-800 text-forest-900 hover:bg-forest-800 hover:text-beige-100"
-              )}
+              className="nav-link border-[1.5px] border-beige-200/60 px-[1.4rem] py-2 text-beige-100 transition-all hover:border-beige-100 hover:bg-forest-700"
               aria-label="Gespräch vereinbaren"
             >
               Gespräch vereinbaren
@@ -105,10 +83,7 @@ export default function Navbar() {
 
         <button
           type="button"
-          className={cn(
-            "flex h-10 w-10 items-center justify-center md:hidden",
-            scrolled ? "text-beige-200" : "text-forest-800"
-          )}
+          className="flex h-10 w-10 items-center justify-center text-beige-100 md:hidden"
           onClick={() => setMobileOpen(true)}
           aria-label="Menü öffnen"
           aria-expanded={mobileOpen}
@@ -123,13 +98,13 @@ export default function Navbar() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[300] flex flex-col bg-forest-800 px-8 pt-24 md:hidden"
+            className="fixed inset-0 z-[300] flex flex-col bg-forest-900 px-8 pt-24 md:hidden"
             role="dialog"
             aria-label="Mobilmenü"
           >
             <button
               type="button"
-              className="absolute right-6 top-5 flex h-10 w-10 items-center justify-center text-beige-200"
+              className="absolute right-6 top-5 flex h-10 w-10 items-center justify-center text-beige-100"
               onClick={closeMobile}
               aria-label="Menü schließen"
             >
@@ -161,7 +136,7 @@ export default function Navbar() {
                 <Link
                   href="#kontakt"
                   onClick={closeMobile}
-                  className="inline-block border border-forest-400 px-6 py-3 text-sm font-semibold uppercase tracking-nav text-beige-200"
+                  className="inline-block border border-beige-200/60 px-6 py-3 text-sm font-semibold uppercase tracking-nav text-beige-100"
                   aria-label="Gespräch vereinbaren"
                 >
                   Gespräch vereinbaren
