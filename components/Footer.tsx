@@ -99,7 +99,7 @@ export default function Footer() {
             Datenschutz
           </Link>
           <Link
-            href="#"
+            href="/agb"
             className="text-[12px] font-normal tracking-normal text-beige-200/90 transition-colors hover:text-beige-100"
           >
             AGB
