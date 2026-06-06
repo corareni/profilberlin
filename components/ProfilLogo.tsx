@@ -6,7 +6,7 @@ const BRAND_GREEN = "#13543E";
 interface ProfilLogoProps {
   variant?: "full" | "icon";
   theme?: "brand" | "light";
-  size?: "sm" | "md" | "lg";
+  size?: "sm" | "md" | "lg" | "xl";
   href?: string;
   className?: string;
 }
@@ -19,20 +19,12 @@ function LogoIcon({ color, className }: { color: string; className?: string }) {
       className={className}
       aria-hidden="true"
     >
-      {/* Large arc: upper-right (49°) CW through bottom to upper-left (131°) */}
+      {/* Single arc with open gap at top (300° arc, 60° gap centered at 12 o'clock) */}
       <path
-        d="M 55.7 21.9 A 24 24 0 1 1 24.3 21.9"
+        d="M 52 19.2 A 24 24 0 1 1 28 19.2"
         fill="none"
         stroke={color}
-        strokeWidth="3.8"
-        strokeLinecap="round"
-      />
-      {/* Small top arc: upper-left (119°) CW through 12-o'clock to upper-right (61°) */}
-      <path
-        d="M 28.4 19 A 24 24 0 0 1 51.6 19"
-        fill="none"
-        stroke={color}
-        strokeWidth="3.8"
+        strokeWidth="5"
         strokeLinecap="round"
       />
       <text
@@ -59,20 +51,12 @@ function LogoFull({ color, className }: { color: string; className?: string }) {
       className={className}
       aria-hidden="true"
     >
-      {/* Large arc: upper-right (49°) CW through bottom to upper-left (131°) */}
+      {/* Single arc with open gap at top (300° arc, 60° gap centered at 12 o'clock) */}
       <path
-        d="M 156.2 19.8 A 40 40 0 1 1 103.8 19.8"
+        d="M 150 15.4 A 40 40 0 1 1 110 15.4"
         fill="none"
         stroke={color}
-        strokeWidth="5.5"
-        strokeLinecap="round"
-      />
-      {/* Small top arc: upper-left (119°) CW through 12-o'clock to upper-right (61°) */}
-      <path
-        d="M 110.6 15 A 40 40 0 0 1 149.4 15"
-        fill="none"
-        stroke={color}
-        strokeWidth="5.5"
+        strokeWidth="7"
         strokeLinecap="round"
       />
       <text
@@ -120,11 +104,13 @@ const sizes = {
     sm: "h-8 w-8",
     md: "h-10 w-10",
     lg: "h-24 w-24",
+    xl: "h-40 w-40",
   },
   full: {
     sm: "h-12 w-auto min-w-[130px]",
     md: "h-14 w-auto min-w-[160px]",
     lg: "h-20 w-auto min-w-[220px]",
+    xl: "h-28 w-auto min-w-[300px]",
   },
 };
 

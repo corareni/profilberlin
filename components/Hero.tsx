@@ -2,7 +2,8 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { HERO_STATS, COMPANY } from "@/lib/constants";
+import { COMPANY } from "@/lib/constants";
+import ProfilLogo from "./ProfilLogo";
 
 const fadeUp = (delay: number) => ({
   initial: { opacity: 0, y: 22 },
@@ -74,27 +75,17 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      <div className="relative z-10 hidden flex-col justify-end px-6 pb-32 md:flex md:px-14 md:pr-12">
-        <div className="flex flex-col">
-          {HERO_STATS.map((stat) => (
-            <div
-              key={stat.label}
-              className="grid grid-cols-[1fr_auto] items-center gap-4 border-b border-beige-200/15 py-8 first:border-t"
-            >
-              <span className="text-[11px] font-semibold uppercase tracking-[0.16em] text-beige-200/90">
-                {stat.label}
-              </span>
-              <span
-                className={`font-extrabold leading-none tracking-[-0.04em] text-beige-200/[0.08] ${
-                  stat.number === "10707" ? "text-[1.9rem]" : "text-[2.8rem]"
-                }`}
-                aria-hidden="true"
-              >
-                {stat.number}
-              </span>
-            </div>
-          ))}
-        </div>
+      <div className="relative z-10 hidden flex-col items-center justify-center px-6 md:flex md:px-14">
+        <motion.div {...fadeUp(0.3)} className="flex flex-col items-center">
+          <ProfilLogo variant="icon" theme="light" size="xl" href="" />
+          <p className="mt-12 text-center text-[12px] font-semibold uppercase leading-[2.1] tracking-[0.18em] text-beige-200/90">
+            Vermögensmanagement
+            <br />
+            mit Berliner
+            <br />
+            Charakter
+          </p>
+        </motion.div>
       </div>
 
       <div className="absolute bottom-0 left-0 right-0 z-20 flex flex-wrap items-center gap-6 overflow-x-auto border-t border-beige-200/15 bg-forest-700 px-6 py-4 md:gap-10 md:px-14">
