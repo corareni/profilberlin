@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-beige-200 text-ink font-sans antialiased overflow-x-hidden;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-forest-800;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-forest-500;
+}
+
+@layer components {
+  .section-heading {
+    @apply font-extrabold uppercase tracking-section leading-[1.02];
+  }
+
+  .section-heading-thin {
+    @apply font-thin;
+  }
+
+  .body-text {
+    @apply text-[11.5px] font-light leading-[2.1] tracking-wide;
+  }
+
+  .body-text-dark {
+    @apply body-text text-mid;
+  }
+
+  .body-text-light {
+    @apply body-text text-beige-200/40;
+  }
+
+  .nav-link {
+    @apply text-[9px] font-semibold tracking-nav uppercase transition-colors;
+  }
+
+  .btn-primary {
+    @apply inline-block border-[1.5px] border-beige-200 bg-beige-200 px-[2.2rem] py-[0.85rem] text-[9px] font-bold uppercase tracking-[0.22em] text-forest-800 transition-all hover:border-beige-300 hover:bg-beige-300;
+  }
+
+  .btn-ghost {
+    @apply flex items-center gap-2 text-[9px] font-semibold uppercase tracking-nav text-beige-200/30 transition-colors hover:text-beige-200/85;
+  }
+
+  .scroll-section {
+    @apply scroll-mt-[68px];
+  }
+}
