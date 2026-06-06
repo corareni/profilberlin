@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profil Vermögensmanagement GmbH – Berlin</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ─────────────────────────────────────────────
+   RESET & TOKENS
+───────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+:root {
+  /* greens */
+  --g900: #071510;
+  --g800: #0f2318;
+  --g700: #1b3d2a;
+  --g600: #2d5c3f;
+  --g500: #3a6b4e;
+  --g400: #4a7c59;
+  --g300: #6a9e77;
+
+  /* beige / sand */
+  --b100: #faf7f2;
+  --b200: #f2ede3;
+  --b300: #e8e2d6;
+  --b400: #ddd7c8;
+  --b500: #ccc5b3;
+  --b600: #a09585;
+
+  /* text */
+  --ink:  #18160f;
+  --mid:  #6b6455;
+  --dim:  #9a9285;
+
+  /* misc */
+  --gold: #b8963e;
+  --radius: 0px;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: var(--b200);
+  color: var(--ink);
+  overflow-x: hidden;
+}
+
+/* ─────────────────────────────────────────────
+   SCROLLBAR
+───────────────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--g800); }
+::-webkit-scrollbar-thumb { background: var(--g500); }
+
+/* ─────────────────────────────────────────────
+   NAV
+───────────────────────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 3.5rem;
+  height: 68px;
+  background: rgba(242, 237, 227, 0.96);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--b400);
+  transition: background 0.3s, border-color 0.3s;
+}
+nav.scrolled {
+  background: rgba(15, 35, 24, 0.97);
+  border-bottom-color: rgba(255,255,255,0.06);
+}
+nav.scrolled .nav-links a { color: rgba(255,255,255,0.45); }
+nav.scrolled .nav-links a:hover { color: #fff; }
+nav.scrolled .nav-cta { border-color: var(--g400); color: rgba(255,255,255,0.7) !important; }
+nav.scrolled .nav-cta:hover { background: var(--g600) !important; color: #fff !important; }
+nav.scrolled .brand-top { color: var(--b200); }
+nav.scrolled .brand-sub { color: rgba(255,255,255,0.3); }
+nav.scrolled .logo-box { border-color: rgba(255,255,255,0.25); }
+nav.scrolled .logo-box::before { border-color: rgba(255,255,255,0.25); }
+nav.scrolled .logo-p { color: rgba(255,255,255,0.6); background: var(--g800); }
+
+.nav-brand { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+.logo-box {
+  width: 36px; height: 36px;
+  border: 1.5px solid var(--g700);
+  display: flex; align-items: center; justify-content: center;
+  position: relative; flex-shrink: 0;
+  transition: border-color 0.3s;
+}
+.logo-box::before {
+  content: '';
+  width: 22px; height: 22px;
+  border: 1.5px solid var(--g700);
+  border-radius: 50%; position: absolute;
+  transition: border-color 0.3s;
+}
+.logo-p {
+  font-size: 9px; font-weight: 800; letter-spacing: 0.05em;
+  color: var(--g700); position: relative; z-index: 1;
+  background: var(--b200); padding: 0 1px;
+  transition: color 0.3s, background 0.3s;
+}
+.brand-text { display: flex; flex-direction: column; gap: 1px; }
+.brand-top { font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--g800); transition: color 0.3s; }
+.brand-sub { font-size: 8px; font-weight: 300; letter-spacing: 0.22em; text-transform: uppercase; color: var(--mid); transition: color 0.3s; }
+
+.nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+.nav-links a {
+  font-size: 9px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--mid); text-decoration: none; transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--g700); }
+.nav-cta {
+  padding: .5rem 1.4rem;
+  border: 1.5px solid var(--g700);
+  color: var(--g700) !important; transition: all 0.2s !important;
+}
+.nav-cta:hover { background: var(--g700) !important; color: var(--b200) !important; }
+
+/* ─────────────────────────────────────────────
+   HERO
+───────────────────────────────────────────── */
+.hero {
+  min-height: 100vh;
+  background: var(--g800);
+  display: grid; grid-template-columns: 1fr 1fr;
+  padding-top: 68px;
+  position: relative; overflow: hidden;
+}
+
+/* subtle noise texture overlay */
+.hero::before {
+  content: '';
+  position: absolute; inset: 0; z-index: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.hero-left {
+  padding: 6rem 3.5rem 8rem 3.5rem;
+  display: flex; flex-direction: column; justify-content: center;
+  border-right: 1px solid rgba(242,237,227,0.05);
+  position: relative; z-index: 1;
+}
+
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 12px;
+  font-size: 9px; font-weight: 600; letter-spacing: 0.38em; text-transform: uppercase;
+  color: var(--g400); margin-bottom: 2.5rem;
+  opacity: 0; animation: fadeUp 0.7s ease 0.1s forwards;
+}
+.eyebrow::before { content: ''; width: 30px; height: 1px; background: var(--g400); }
+
+.hero-h1 {
+  font-size: clamp(2.8rem, 4.2vw, 5rem);
+  font-weight: 800; line-height: 0.97;
+  letter-spacing: -0.025em; color: var(--b200);
+  text-transform: uppercase; margin-bottom: 0.3rem;
+  opacity: 0; animation: fadeUp 0.7s ease 0.25s forwards;
+}
+.hero-h1 .thin {
+  display: block; font-weight: 100;
+  color: rgba(242,237,227,0.28); font-size: 0.85em;
+  letter-spacing: 0.01em; line-height: 1.1;
+}
+
+.hero-divider {
+  width: 40px; height: 1px; background: var(--g500);
+  margin: 2rem 0;
+  opacity: 0; animation: fadeUp 0.7s ease 0.38s forwards;
+}
+
+.hero-body {
+  font-size: 11.5px; font-weight: 300; line-height: 2.1;
+  color: rgba(242,237,227,0.38); max-width: 380px;
+  letter-spacing: 0.04em; margin-bottom: 3rem;
+  opacity: 0; animation: fadeUp 0.7s ease 0.48s forwards;
+}
+
+.hero-actions {
+  display: flex; align-items: center; gap: 2rem;
+  opacity: 0; animation: fadeUp 0.7s ease 0.6s forwards;
+}
+.btn-primary {
+  padding: .85rem 2.2rem; background: var(--b200); color: var(--g800);
+  font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase; text-decoration: none;
+  border: 1.5px solid var(--b200); display: inline-block; transition: all 0.2s;
+}
+.btn-primary:hover { background: var(--b300); border-color: var(--b300); }
+.btn-secondary {
+  font-size: 9px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
+  color: rgba(242,237,227,0.3); text-decoration: none;
+  display: flex; align-items: center; gap: 8px; transition: color 0.2s;
+}
+.btn-secondary:hover { color: rgba(242,237,227,0.85); }
+.btn-secondary::after { content: '→'; font-size: 14px; }
+
+/* hero right — stats panel */
+.hero-right {
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 0 3.5rem 8rem 3rem; position: relative; z-index: 1;
+}
+
+.hero-stats { display: flex; flex-direction: column; }
+.hstat {
+  display: grid; grid-template-columns: 1fr auto;
+  align-items: center; gap: 1rem;
+  padding: 2rem 0; border-bottom: 1px solid rgba(242,237,227,0.05);
+}
+.hstat:first-child { border-top: 1px solid rgba(242,237,227,0.05); }
+.hstat-label {
+  font-size: 8px; font-weight: 600; letter-spacing: 0.28em; text-transform: uppercase;
+  color: rgba(242,237,227,0.2);
+}
+.hstat-val {
+  font-size: 2.8rem; font-weight: 800; letter-spacing: -0.04em; line-height: 1;
+  color: rgba(242,237,227,0.05);
+}
+
+/* hero bottom ticker */
+.hero-ticker {
+  position: absolute; bottom: 0; left: 0; right: 0; z-index: 2;
+  background: var(--g700);
+  border-top: 1px solid rgba(242,237,227,0.05);
+  padding: 1rem 3.5rem;
+  display: flex; align-items: center; gap: 2.5rem;
+}
+.ticker-item { font-size: 8px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(242,237,227,0.22); white-space: nowrap; }
+.ticker-dot { width: 3px; height: 3px; border-radius: 50%; background: var(--g400); flex-shrink: 0; }
+
+/* ─────────────────────────────────────────────
+   TRUST BAR
+───────────────────────────────────────────── */
+.trust-bar {
+  background: var(--b100);
+  border-bottom: 1px solid var(--b400);
+  padding: 2.2rem 3.5rem;
+  display: flex; align-items: center; justify-content: space-between; gap: 2rem;
+}
+.trust-item {
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  flex: 1; text-align: center;
+}
+.trust-num {
+  font-size: 1.6rem; font-weight: 800; letter-spacing: -0.03em;
+  color: var(--g700);
+}
+.trust-label {
+  font-size: 8px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--mid);
+}
+.trust-sep { width: 1px; height: 40px; background: var(--b400); flex-shrink: 0; }
+
+/* ─────────────────────────────────────────────
+   SECTION HELPERS
+───────────────────────────────────────────── */
+.sec-tag {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 8px; font-weight: 700; letter-spacing: 0.35em; text-transform: uppercase;
+  color: var(--g400); margin-bottom: 1.8rem;
+}
+.sec-tag::before { content: ''; width: 20px; height: 1px; background: var(--g400); }
+.sec-tag--light { color: rgba(242,237,227,0.3); }
+.sec-tag--light::before { background: rgba(242,237,227,0.2); }
+
+h2.section-h2 {
+  font-size: clamp(1.8rem, 2.6vw, 3.2rem);
+  font-weight: 800; text-transform: uppercase;
+  letter-spacing: -0.025em; line-height: 1.02;
+}
+h2.section-h2.dark { color: var(--g800); }
+h2.section-h2.light { color: var(--b200); }
+h2.section-h2 .w100 { font-weight: 100; }
+h2.section-h2 .w100d { font-weight: 100; color: rgba(15,35,24,0.3); }
+h2.section-h2 .w100l { font-weight: 100; color: rgba(242,237,227,0.28); }
+
+.body-dark { font-size: 11.5px; font-weight: 300; line-height: 2.1; color: var(--mid); letter-spacing: 0.03em; }
+.body-light { font-size: 11.5px; font-weight: 300; line-height: 2.1; color: rgba(242,237,227,0.4); letter-spacing: 0.03em; }
+
+/* ─────────────────────────────────────────────
+   PHILOSOPHY
+───────────────────────────────────────────── */
+.philosophy {
+  display: grid; grid-template-columns: 1fr 1fr; min-height: 80vh;
+}
+.phil-left {
+  background: var(--b300); padding: 7rem 3.5rem;
+  display: flex; flex-direction: column; justify-content: center;
+  border-right: 1px solid var(--b400);
+}
+.phil-left p { max-width: 400px; margin-top: 1.5rem; }
+
+.phil-right {
+  background: var(--g700); padding: 7rem 3.5rem;
+  display: flex; flex-direction: column; justify-content: space-between;
+}
+.blockquote {
+  border-left: 2px solid var(--g400); padding-left: 1.6rem;
+  font-size: 1.05rem; font-weight: 300; line-height: 1.8;
+  color: rgba(242,237,227,0.5); letter-spacing: 0.015em;
+}
+.quote-attr { margin-top: 1.5rem; }
+.attr-name { font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(242,237,227,0.65); }
+.attr-role { font-size: 8px; font-weight: 300; letter-spacing: 0.12em; color: rgba(242,237,227,0.22); margin-top: 4px; }
+
+.values-list { margin-top: auto; padding-top: 3rem; display: flex; flex-direction: column; }
+.val-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.1rem 0; border-bottom: 1px solid rgba(242,237,227,0.06);
+  cursor: default;
+}
+.val-row:first-child { border-top: 1px solid rgba(242,237,227,0.06); }
+.val-row:hover .val-name { color: rgba(242,237,227,0.7); }
+.val-row:hover .val-arrow { color: rgba(242,237,227,0.4); }
+.val-name { font-size: 8px; font-weight: 700; letter-spacing: 0.28em; text-transform: uppercase; color: rgba(242,237,227,0.35); transition: color 0.2s; }
+.val-arrow { font-size: 12px; color: rgba(242,237,227,0.12); transition: color 0.2s; }
+
+/* ─────────────────────────────────────────────
+   SERVICES
+───────────────────────────────────────────── */
+.services { padding: 7rem 3.5rem; background: var(--b200); }
+.services-header {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 4rem; margin-bottom: 4rem; align-items: end;
+}
+.services-header p { max-width: 420px; }
+
+.services-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1px; background: var(--b400); border: 1px solid var(--b400);
+}
+.svc-card {
+  background: var(--b200); padding: 2.5rem 2rem;
+  transition: background 0.25s; cursor: default;
+}
+.svc-card:hover { background: var(--b100); }
+.svc-num { font-size: 2.5rem; font-weight: 100; color: var(--b400); line-height: 1; margin-bottom: 1.5rem; letter-spacing: -0.03em; }
+.svc-name { font-size: 8px; font-weight: 700; letter-spacing: 0.28em; text-transform: uppercase; color: var(--g600); margin-bottom: 0.9rem; }
+.svc-desc { font-size: 11px; font-weight: 300; line-height: 1.95; color: var(--mid); letter-spacing: 0.02em; }
+
+/* ─────────────────────────────────────────────
+   WHY US — 3-column USP block (Julius Baer style)
+───────────────────────────────────────────── */
+.why-us {
+  background: var(--g800);
+  padding: 7rem 3.5rem;
+}
+.why-us-header { margin-bottom: 4rem; }
+.why-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1px; background: rgba(242,237,227,0.05);
+  border: 1px solid rgba(242,237,227,0.05);
+}
+.why-card {
+  background: var(--g800); padding: 2.8rem 2rem;
+  transition: background 0.2s;
+}
+.why-card:hover { background: rgba(242,237,227,0.02); }
+.why-icon {
+  width: 40px; height: 40px; margin-bottom: 1.5rem;
+  display: flex; align-items: center; justify-content: center;
+  border: 1px solid rgba(242,237,227,0.12);
+}
+.why-icon svg { width: 18px; height: 18px; stroke: var(--g400); fill: none; stroke-width: 1.5; }
+.why-title { font-size: 8px; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(242,237,227,0.6); margin-bottom: 1rem; }
+.why-text { font-size: 11px; font-weight: 300; line-height: 2; color: rgba(242,237,227,0.3); letter-spacing: 0.025em; }
+
+/* ─────────────────────────────────────────────
+   PROCESS
+───────────────────────────────────────────── */
+.process {
+  display: grid; grid-template-columns: 3fr 1fr;
+  background: var(--g900); min-height: 60vh;
+}
+.process-left { padding: 7rem 3.5rem; border-right: 1px solid rgba(242,237,227,0.04); }
+.steps-list { margin-top: 3rem; display: flex; flex-direction: column; }
+.step-item {
+  display: grid; grid-template-columns: 52px 1fr;
+  gap: 1.5rem; padding: 2rem 0;
+  border-bottom: 1px solid rgba(242,237,227,0.04);
+}
+.step-item:last-child { border-bottom: none; }
+.step-num { font-size: 2rem; font-weight: 800; color: rgba(242,237,227,0.04); line-height: 1; letter-spacing: -0.03em; }
+.step-title { font-size: 8px; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(242,237,227,0.55); margin-bottom: .5rem; }
+.step-desc { font-size: 11px; font-weight: 300; line-height: 1.95; color: rgba(242,237,227,0.28); letter-spacing: 0.025em; }
+
+.process-right {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 4rem 2rem; text-align: center; gap: 2.5rem;
+}
+.process-logo-mark {
+  width: 100px; height: 100px; border: 1px solid rgba(242,237,227,0.1);
+  display: flex; align-items: center; justify-content: center; position: relative;
+}
+.process-logo-mark::before {
+  content: ''; width: 66px; height: 66px;
+  border: 1px solid rgba(242,237,227,0.1); border-radius: 50%; position: absolute;
+}
+.process-logo-text {
+  font-size: 11px; font-weight: 800; letter-spacing: 0.12em;
+  color: rgba(242,237,227,0.3); position: relative; z-index: 1;
+  background: var(--g900); padding: 0 3px;
+}
+.process-tag {
+  font-size: 8px; font-weight: 600; letter-spacing: 0.22em;
+  text-transform: uppercase; color: rgba(242,237,227,0.16);
+  line-height: 1.9;
+}
+
+/* ─────────────────────────────────────────────
+   TESTIMONIAL / TRUST STATEMENT (Finvia style)
+───────────────────────────────────────────── */
+.trust-statement {
+  background: var(--b300);
+  padding: 6rem 3.5rem;
+  display: grid; grid-template-columns: 1fr 2fr; gap: 6rem; align-items: center;
+  border-top: 1px solid var(--b400); border-bottom: 1px solid var(--b400);
+}
+.ts-left {}
+.ts-right {}
+.ts-big-quote {
+  font-size: clamp(1.4rem, 2.2vw, 2.2rem);
+  font-weight: 300; line-height: 1.6;
+  color: var(--g800); letter-spacing: 0.01em;
+}
+.ts-big-quote strong { font-weight: 700; }
+.ts-byline { margin-top: 2rem; display: flex; align-items: center; gap: 1rem; }
+.ts-avatar {
+  width: 44px; height: 44px; border: 1.5px solid var(--b500);
+  display: flex; align-items: center; justify-content: center;
+  background: var(--g700);
+}
+.ts-avatar-init { font-size: 12px; font-weight: 700; color: rgba(242,237,227,0.6); }
+.ts-name { font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--g700); }
+.ts-role { font-size: 8px; font-weight: 300; color: var(--mid); margin-top: 2px; letter-spacing: 0.08em; }
+
+/* ─────────────────────────────────────────────
+   FAQ (Gerd Kommer inspired — clean, no-fluff)
+───────────────────────────────────────────── */
+.faq {
+  padding: 7rem 3.5rem;
+  background: var(--b200);
+  display: grid; grid-template-columns: 1fr 2fr; gap: 6rem;
+}
+.faq-left {}
+.faq-list { display: flex; flex-direction: column; }
+.faq-item {
+  border-bottom: 1px solid var(--b400);
+  overflow: hidden;
+}
+.faq-item:first-child { border-top: 1px solid var(--b400); }
+.faq-q {
+  width: 100%; background: none; border: none; padding: 1.5rem 0;
+  display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+  cursor: pointer; text-align: left;
+  font-family: 'Montserrat', sans-serif;
+}
+.faq-q-text { font-size: 11px; font-weight: 600; letter-spacing: 0.04em; color: var(--g800); }
+.faq-q-icon {
+  width: 20px; height: 20px; flex-shrink: 0;
+  border: 1px solid var(--b500);
+  display: flex; align-items: center; justify-content: center;
+  transition: transform 0.3s, background 0.3s;
+}
+.faq-q-icon span { font-size: 14px; color: var(--g600); line-height: 1; }
+.faq-item.open .faq-q-icon { transform: rotate(45deg); background: var(--g700); border-color: var(--g700); }
+.faq-item.open .faq-q-icon span { color: var(--b200); }
+.faq-a {
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.3s ease;
+  font-size: 11px; font-weight: 300; line-height: 2; color: var(--mid); letter-spacing: 0.03em;
+  padding: 0;
+}
+.faq-item.open .faq-a { max-height: 300px; padding-bottom: 1.5rem; }
+
+/* ─────────────────────────────────────────────
+   CONTACT
+───────────────────────────────────────────── */
+.contact {
+  display: grid; grid-template-columns: 1fr 1fr;
+  background: var(--b300);
+}
+.contact-left {
+  padding: 7rem 3.5rem;
+  border-right: 1px solid var(--b400);
+}
+.contact-details { display: flex; flex-direction: column; gap: 1.8rem; margin-top: 2.5rem; }
+.cd-row { display: flex; gap: 1.5rem; align-items: flex-start; }
+.cd-key { font-size: 7px; font-weight: 700; letter-spacing: 0.32em; text-transform: uppercase; color: var(--g400); min-width: 60px; padding-top: 2px; }
+.cd-val { font-size: 11.5px; font-weight: 300; color: var(--mid); letter-spacing: 0.02em; line-height: 1.7; }
+
+/* map placeholder */
+.map-placeholder {
+  margin-top: 3rem;
+  height: 180px; background: var(--g800);
+  display: flex; align-items: center; justify-content: center;
+  border: 1px solid var(--b400);
+  position: relative; overflow: hidden;
+}
+.map-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(242,237,227,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(242,237,227,0.03) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+.map-pin {
+  position: relative; z-index: 1;
+  display: flex; flex-direction: column; align-items: center; gap: 4px;
+}
+.map-pin-dot {
+  width: 12px; height: 12px; background: var(--g400); border-radius: 50%;
+  box-shadow: 0 0 0 4px rgba(74,124,89,0.2);
+}
+.map-pin-label { font-size: 8px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(242,237,227,0.4); }
+
+.contact-right { padding: 7rem 3.5rem; display: flex; flex-direction: column; justify-content: center; }
+.form-group { display: flex; flex-direction: column; gap: 2rem; }
+.ff { display: flex; flex-direction: column; gap: 7px; }
+.ff label { font-size: 7px; font-weight: 700; letter-spacing: 0.32em; text-transform: uppercase; color: var(--dim); }
+.ff input, .ff textarea, .ff select {
+  background: transparent; border: none;
+  border-bottom: 1px solid var(--b500);
+  padding: .75rem 0;
+  font-family: 'Montserrat', sans-serif; font-size: 11.5px; font-weight: 300;
+  color: var(--ink); outline: none; transition: border-color 0.2s;
+  letter-spacing: 0.02em;
+}
+.ff input:focus, .ff textarea:focus, .ff select:focus { border-bottom-color: var(--g600); }
+.ff input::placeholder, .ff textarea::placeholder { color: var(--b500); font-weight: 300; }
+.ff textarea { resize: none; }
+.ff select { cursor: pointer; -webkit-appearance: none; appearance: none; }
+.ff select option { background: var(--b200); }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.btn-submit {
+  padding: .9rem 2.5rem; background: var(--g700); color: var(--b200);
+  border: none; font-family: 'Montserrat', sans-serif;
+  font-size: 8px; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase;
+  cursor: pointer; align-self: flex-start; margin-top: .5rem;
+  transition: background 0.2s; border: 1.5px solid var(--g700);
+}
+.btn-submit:hover { background: var(--g600); border-color: var(--g600); }
+.form-note { font-size: 9px; font-weight: 300; color: var(--dim); letter-spacing: 0.04em; margin-top: .5rem; }
+
+/* ─────────────────────────────────────────────
+   FOOTER
+───────────────────────────────────────────── */
+footer {
+  background: var(--g900);
+  padding: 4rem 3.5rem 2.5rem;
+  border-top: 1px solid rgba(242,237,227,0.05);
+}
+.footer-top {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 4rem; padding-bottom: 3rem;
+  border-bottom: 1px solid rgba(242,237,227,0.05);
+}
+.footer-brand-col {}
+.footer-brand-mark {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 1.2rem;
+}
+.foot-logo {
+  width: 30px; height: 30px; border: 1px solid rgba(242,237,227,0.15);
+  display: flex; align-items: center; justify-content: center; position: relative;
+}
+.foot-logo::before {
+  content: ''; width: 18px; height: 18px;
+  border: 1px solid rgba(242,237,227,0.15); border-radius: 50%; position: absolute;
+}
+.foot-logo-p { font-size: 8px; font-weight: 800; color: rgba(242,237,227,0.35); position: relative; z-index: 1; background: var(--g900); padding: 0 1px; }
+.foot-brand-name { font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(242,237,227,0.4); }
+.footer-tagline { font-size: 11px; font-weight: 300; line-height: 1.9; color: rgba(242,237,227,0.2); letter-spacing: 0.03em; max-width: 280px; }
+
+.footer-col-title { font-size: 8px; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(242,237,227,0.3); margin-bottom: 1.2rem; }
+.footer-col-links { display: flex; flex-direction: column; gap: 0.7rem; }
+.footer-col-links a { font-size: 11px; font-weight: 300; color: rgba(242,237,227,0.22); text-decoration: none; letter-spacing: 0.03em; transition: color 0.2s; }
+.footer-col-links a:hover { color: rgba(242,237,227,0.6); }
+
+.footer-bottom {
+  display: flex; justify-content: space-between; align-items: center;
+  padding-top: 2rem; gap: 2rem;
+}
+.footer-copy { font-size: 9px; font-weight: 300; color: rgba(242,237,227,0.15); letter-spacing: 0.08em; }
+.footer-legal { display: flex; gap: 2rem; }
+.footer-legal a { font-size: 9px; font-weight: 300; color: rgba(242,237,227,0.2); text-decoration: none; letter-spacing: 0.08em; transition: color 0.2s; }
+.footer-legal a:hover { color: rgba(242,237,227,0.5); }
+.footer-reg { font-size: 9px; font-weight: 300; color: rgba(242,237,227,0.1); letter-spacing: 0.06em; text-align: right; }
+
+/* ─────────────────────────────────────────────
+   ANIMATIONS
+───────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* scroll-triggered reveal */
+.reveal {
+  opacity: 0; transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+
+/* ─────────────────────────────────────────────
+   MOBILE BASICS
+───────────────────────────────────────────── */
+@media (max-width: 900px) {
+  nav { padding: 0 1.5rem; }
+  .nav-links { display: none; }
+  .hero { grid-template-columns: 1fr; }
+  .hero-right { display: none; }
+  .hero-left { padding: 4rem 1.5rem 7rem; }
+  .hero-h1 { font-size: 2.6rem; }
+  .trust-bar { flex-wrap: wrap; padding: 2rem 1.5rem; }
+  .trust-sep { display: none; }
+  .philosophy { grid-template-columns: 1fr; }
+  .services-header { grid-template-columns: 1fr; gap: 1.5rem; }
+  .services-grid { grid-template-columns: 1fr 1fr; }
+  .why-grid { grid-template-columns: 1fr; }
+  .process { grid-template-columns: 1fr; }
+  .process-right { display: none; }
+  .trust-statement { grid-template-columns: 1fr; gap: 2rem; }
+  .faq { grid-template-columns: 1fr; gap: 3rem; }
+  .contact { grid-template-columns: 1fr; }
+  .footer-top { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; gap: 1rem; }
+  .services { padding: 4rem 1.5rem; }
+  .why-us, .services, .faq, .trust-statement { padding: 4rem 1.5rem; }
+  .phil-left, .phil-right, .contact-left, .contact-right, .process-left { padding: 4rem 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════
+     NAV
+════════════════════════════════════════════ -->
+<nav id="main-nav">
+  <a href="#" class="nav-brand">
+    <div class="logo-box"><span class="logo-p">P</span></div>
+    <div class="brand-text">
+      <span class="brand-top">Profil</span>
+      <span class="brand-sub">Vermögensmanagement</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#philosophie">Philosophie</a></li>
+    <li><a href="#leistungen">Leistungen</a></li>
+    <li><a href="#ansatz">Ansatz</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#kontakt" class="nav-cta">Gespräch vereinbaren</a></li>
+  </ul>
+</nav>
+
+<!-- ════════════════════════════════════════════
+     HERO
+════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="eyebrow">Unabhängige Vermögensverwaltung · Berlin</div>
+    <h1 class="hero-h1">
+      Ihr<br>Vermögen.
+      <span class="thin">Unsere<br>Verantwortung.</span>
+    </h1>
+    <div class="hero-divider"></div>
+    <p class="hero-body">
+      Seit über zwei Jahrzehnten betreuen wir private und institutionelle Anleger
+      mit einem klaren Prinzip: langfristiges Denken, individuelle Lösungen,
+      konsequentes Handeln — ohne Interessenkonflikte.
+    </p>
+    <div class="hero-actions">
+      <a href="#kontakt" class="btn-primary">Gespräch vereinbaren</a>
+      <a href="#leistungen" class="btn-secondary">Unsere Leistungen</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-stats">
+      <div class="hstat">
+        <div class="hstat-label">Jahre Erfahrung im Markt</div>
+        <div class="hstat-val">25+</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-label">Unabhängig &amp; provisionsfrei</div>
+        <div class="hstat-val">100%</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-label">Standort Berlin</div>
+        <div class="hstat-val" style="font-size:1.9rem">14057</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-ticker">
+    <span class="ticker-item">Profil Vermögensmanagement GmbH</span>
+    <div class="ticker-dot"></div>
+    <span class="ticker-item">Stefan Affeld · Geschäftsführer</span>
+    <div class="ticker-dot"></div>
+    <span class="ticker-item">Riehlstraße 3 · 14057 Berlin</span>
+    <div class="ticker-dot"></div>
+    <span class="ticker-item">Unabhängig seit 1998</span>
+    <div class="ticker-dot"></div>
+    <span class="ticker-item">Keine Provisionen · Keine Interessenkonflikte</span>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     TRUST BAR
+════════════════════════════════════════════ -->
+<div class="trust-bar">
+  <div class="trust-item reveal">
+    <div class="trust-num">25+</div>
+    <div class="trust-label">Jahre Erfahrung</div>
+  </div>
+  <div class="trust-sep"></div>
+  <div class="trust-item reveal reveal-delay-1">
+    <div class="trust-num">100%</div>
+    <div class="trust-label">Unabhängig</div>
+  </div>
+  <div class="trust-sep"></div>
+  <div class="trust-item reveal reveal-delay-2">
+    <div class="trust-num">0</div>
+    <div class="trust-label">Provisionen</div>
+  </div>
+  <div class="trust-sep"></div>
+  <div class="trust-item reveal reveal-delay-3">
+    <div class="trust-num">1:1</div>
+    <div class="trust-label">Persönliche Betreuung</div>
+  </div>
+  <div class="trust-sep"></div>
+  <div class="trust-item reveal reveal-delay-4">
+    <div class="trust-num">BaFin</div>
+    <div class="trust-label">Reguliert &amp; lizenziert</div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     PHILOSOPHY
+════════════════════════════════════════════ -->
+<section class="philosophy" id="philosophie">
+  <div class="phil-left">
+    <div class="sec-tag reveal">Unsere Philosophie</div>
+    <h2 class="section-h2 dark reveal reveal-delay-1">
+      Kapital<br>schützen.<br>
+      <span class="w100d">Zukunft<br>gestalten.</span>
+    </h2>
+    <p class="body-dark reveal reveal-delay-2">
+      Als unabhängige Vermögensverwaltung stehen wir ausschließlich im Interesse
+      unserer Mandanten. Keine Provisionen, keine Interessenkonflikte — nur klare,
+      langfristig orientierte Beratung auf Basis tiefer Marktkenntnis und
+      jahrzehntelanger Erfahrung.
+    </p>
+    <p class="body-dark reveal reveal-delay-3" style="margin-top:1rem">
+      Unser Ansatz ist ganzheitlich: Wir betrachten nicht einzelne Positionen,
+      sondern Ihr gesamtes Vermögen — und entwickeln daraus eine Strategie,
+      die zu Ihrer Lebenssituation passt.
+    </p>
+  </div>
+  <div class="phil-right">
+    <div class="reveal">
+      <p class="blockquote">
+        „Kapitalerhalt ist keine Bescheidenheit —
+        es ist die höchste Form von Verantwortung
+        gegenüber unseren Mandanten."
+      </p>
+      <div class="quote-attr">
+        <div class="attr-name">Stefan Affeld</div>
+        <div class="attr-role">Geschäftsführer · Profil Vermögensmanagement GmbH</div>
+      </div>
+    </div>
+    <div class="values-list reveal reveal-delay-2">
+      <div class="val-row"><span class="val-name">Unabhängigkeit</span><span class="val-arrow">→</span></div>
+      <div class="val-row"><span class="val-name">Transparenz</span><span class="val-arrow">→</span></div>
+      <div class="val-row"><span class="val-name">Langfristigkeit</span><span class="val-arrow">→</span></div>
+      <div class="val-row"><span class="val-name">Nachhaltigkeit</span><span class="val-arrow">→</span></div>
+      <div class="val-row"><span class="val-name">Diskretion</span><span class="val-arrow">→</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     SERVICES
+════════════════════════════════════════════ -->
+<section class="services" id="leistungen">
+  <div class="services-header">
+    <div>
+      <div class="sec-tag reveal">Unsere Leistungen</div>
+      <h2 class="section-h2 dark reveal reveal-delay-1">
+        Integriertes<br>
+        <span class="w100d">Vermögens-<br>management</span>
+      </h2>
+    </div>
+    <p class="body-dark reveal reveal-delay-2">
+      Wir bieten ein vollständiges Spektrum an Vermögensdienstleistungen —
+      von der strategischen Allokation bis zur taktischen Steuerung, stets
+      abgestimmt auf Ihre persönliche Lebenssituation, Ihre Ziele und
+      Ihren Zeithorizont.
+    </p>
+  </div>
+  <div class="services-grid">
+    <div class="svc-card reveal">
+      <div class="svc-num">01</div>
+      <div class="svc-name">Portfolioverwaltung</div>
+      <p class="svc-desc">Diskretionäre Verwaltung Ihres Vermögens nach individuell vereinbarten Anlagerichtlinien und präzisen Risikoparametern.</p>
+    </div>
+    <div class="svc-card reveal reveal-delay-1">
+      <div class="svc-num">02</div>
+      <div class="svc-name">Anlageberatung</div>
+      <p class="svc-desc">Unabhängige, provisionsfreie Beratung zu Investitionsentscheidungen — auf Basis eigener, tiefgehender Kapitalmarktanalyse.</p>
+    </div>
+    <div class="svc-card reveal reveal-delay-2">
+      <div class="svc-num">03</div>
+      <div class="svc-name">Vermögensplanung</div>
+      <p class="svc-desc">Ganzheitliche Planung Ihrer finanziellen Zukunft: Altersvorsorge, Nachlassplanung, Generationentransfer und Steueroptimierung.</p>
+    </div>
+    <div class="svc-card reveal reveal-delay-1">
+      <div class="svc-num">04</div>
+      <div class="svc-name">Risikoanalyse</div>
+      <p class="svc-desc">Systematische Bewertung und aktive Steuerung aller Portfoliorisiken — transparent, nachvollziehbar und jederzeit dokumentiert.</p>
+    </div>
+    <div class="svc-card reveal reveal-delay-2">
+      <div class="svc-num">05</div>
+      <div class="svc-name">Stiftungen &amp; Institutionen</div>
+      <p class="svc-desc">Spezialisierte Betreuung für Family Offices, Stiftungen und institutionelle Anleger mit besonderen regulatorischen Anforderungen.</p>
+    </div>
+    <div class="svc-card reveal reveal-delay-3">
+      <div class="svc-num">06</div>
+      <div class="svc-name">Reporting &amp; Controlling</div>
+      <p class="svc-desc">Konsolidiertes, individuelles Reporting über alle Vermögenswerte und Assetklassen — klar, präzise und jederzeit abrufbar.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     WHY US
+════════════════════════════════════════════ -->
+<section class="why-us">
+  <div class="why-us-header">
+    <div class="sec-tag sec-tag--light reveal">Warum Profil</div>
+    <h2 class="section-h2 light reveal reveal-delay-1">
+      Was uns<br><span class="w100l">unterscheidet.</span>
+    </h2>
+  </div>
+  <div class="why-grid">
+    <div class="why-card reveal">
+      <div class="why-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <div class="why-title">Vollständige Unabhängigkeit</div>
+      <p class="why-text">Wir erhalten keine Provisionen oder Vergütungen von Produktanbietern. Unser einziges Interesse ist Ihr Vermögen — und seine langfristige Entwicklung.</p>
+    </div>
+    <div class="why-card reveal reveal-delay-1">
+      <div class="why-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      </div>
+      <div class="why-title">Langfristiger Horizont</div>
+      <p class="why-text">Wir denken in Generationen, nicht in Quartalen. Unsere Anlageentscheidungen sind auf Kapitalerhalt und nachhaltiges Wachstum über Jahrzehnte ausgerichtet.</p>
+    </div>
+    <div class="why-card reveal reveal-delay-2">
+      <div class="why-icon">
+        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <div class="why-title">Persönliche Betreuung</div>
+      <p class="why-text">Kein Call-Center, kein wechselnder Berater. Sie haben einen direkten Ansprechpartner, der Ihre Situation kennt und langfristig für Sie da ist.</p>
+    </div>
+    <div class="why-card reveal reveal-delay-1">
+      <div class="why-icon">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+      </div>
+      <div class="why-title">Transparentes Pricing</div>
+      <p class="why-text">Unsere Vergütung ist klar, fair und ausschließlich honorarbasiert. Sie wissen jederzeit, was Sie zahlen — und wofür.</p>
+    </div>
+    <div class="why-card reveal reveal-delay-2">
+      <div class="why-icon">
+        <svg viewBox="0 0 24 24"><path d="M3 3h18v18H3zM3 9h18M9 21V9"/></svg>
+      </div>
+      <div class="why-title">Ganzheitlicher Blick</div>
+      <p class="why-text">Wir betrachten Ihr Gesamtvermögen: liquide Assets, Immobilien, Beteiligungen, Vorsorge und Verbindlichkeiten — alles in einer konsolidierten Sicht.</p>
+    </div>
+    <div class="why-card reveal reveal-delay-3">
+      <div class="why-icon">
+        <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      </div>
+      <div class="why-title">BaFin-reguliert</div>
+      <p class="why-text">Als zugelassene Vermögensverwaltung unterliegen wir der Aufsicht der BaFin und erfüllen alle regulatorischen Anforderungen nach deutschem Recht.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     PROCESS
+════════════════════════════════════════════ -->
+<section class="process" id="ansatz">
+  <div class="process-left">
+    <div class="sec-tag sec-tag--light reveal">Unser Ansatz</div>
+    <h2 class="section-h2 light reveal reveal-delay-1">
+      Wie wir<br><span class="w100l">arbeiten.</span>
+    </h2>
+    <div class="steps-list">
+      <div class="step-item reveal">
+        <div class="step-num">01</div>
+        <div>
+          <div class="step-title">Erstgespräch &amp; Bedarfsanalyse</div>
+          <p class="step-desc">Wir lernen Sie kennen — Ihre Ziele, Ihre Lebenssituation und Ihren Zeithorizont. Kein Produkt, kein Pitch. Nur ein ehrliches Gespräch über das, was wirklich zählt.</p>
+        </div>
+      </div>
+      <div class="step-item reveal reveal-delay-1">
+        <div class="step-num">02</div>
+        <div>
+          <div class="step-title">Strategieentwicklung</div>
+          <p class="step-desc">Auf Basis Ihrer individuellen Rahmenbedingungen entwickeln wir eine maßgeschneiderte Anlagestrategie mit klaren Renditezielen und Risikoparametern.</p>
+        </div>
+      </div>
+      <div class="step-item reveal reveal-delay-2">
+        <div class="step-num">03</div>
+        <div>
+          <div class="step-title">Umsetzung &amp; Implementierung</div>
+          <p class="step-desc">Wir setzen die vereinbarte Strategie konsequent und kosteneffizient um — mit Zugang zu allen relevanten Assetklassen und Märkten weltweit.</p>
+        </div>
+      </div>
+      <div class="step-item reveal reveal-delay-3">
+        <div class="step-num">04</div>
+        <div>
+          <div class="step-title">Laufende Betreuung &amp; Reporting</div>
+          <p class="step-desc">Regelmäßige Portfolio-Reviews, proaktive Kommunikation und laufende Anpassung an veränderte Markt- oder Lebenssituationen — Ihr Vermögen in besten Händen.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="process-right">
+    <div class="process-logo-mark">
+      <span class="process-logo-text">PROFIL</span>
+    </div>
+    <p class="process-tag">Vermögens­management<br>mit Berliner<br>Charakter</p>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     TRUST STATEMENT
+════════════════════════════════════════════ -->
+<section class="trust-statement">
+  <div class="ts-left reveal">
+    <div class="sec-tag">Mandanten</div>
+    <h2 class="section-h2 dark" style="font-size:1.4rem">
+      Vertrauen durch<br><span class="w100d">Ergebnisse.</span>
+    </h2>
+  </div>
+  <div class="ts-right reveal reveal-delay-1">
+    <p class="ts-big-quote">
+      „Was mich überzeugt hat: <strong>kein Verkaufsgespräch, keine Empfehlung
+      mit versteckten Interessen</strong>. Stefan Affeld hat unsere Situation
+      wirklich verstanden — und eine Strategie entwickelt, die zu uns passt,
+      nicht zu einem Produktportfolio."
+    </p>
+    <div class="ts-byline">
+      <div class="ts-avatar"><span class="ts-avatar-init">MK</span></div>
+      <div>
+        <div class="ts-name">M. Kessler</div>
+        <div class="ts-role">Privatmandant · Unternehmer, Berlin</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     FAQ
+════════════════════════════════════════════ -->
+<section class="faq" id="faq">
+  <div class="faq-left">
+    <div class="sec-tag reveal">FAQ</div>
+    <h2 class="section-h2 dark reveal reveal-delay-1">
+      Häufige<br><span class="w100d">Fragen.</span>
+    </h2>
+    <p class="body-dark reveal reveal-delay-2" style="margin-top:1.5rem">
+      Antworten auf die wichtigsten Fragen rund um unabhängige Vermögensverwaltung
+      und unsere Arbeitsweise.
+    </p>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item">
+      <button class="faq-q">
+        <span class="faq-q-text">Was ist der Unterschied zur Bankberatung?</span>
+        <div class="faq-q-icon"><span>+</span></div>
+      </button>
+      <div class="faq-a">
+        Als unabhängige Vermögensverwaltung sind wir nicht an ein Produktportfolio gebunden und erhalten keine Provisionen von Produktanbietern. Wir werden ausschließlich durch eine transparente Honorargebühr vergütet — und stehen damit immer auf Ihrer Seite.
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">
+        <span class="faq-q-text">Ab welchem Vermögen ist eine Zusammenarbeit sinnvoll?</span>
+        <div class="faq-q-icon"><span>+</span></div>
+      </button>
+      <div class="faq-a">
+        Eine Zusammenarbeit ist in der Regel ab einem investierbaren Vermögen von 250.000 Euro sinnvoll. Gerne besprechen wir Ihre individuelle Situation in einem unverbindlichen Erstgespräch.
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">
+        <span class="faq-q-text">Wie werden Ihre Leistungen vergütet?</span>
+        <div class="faq-q-icon"><span>+</span></div>
+      </button>
+      <div class="faq-a">
+        Unsere Vergütung erfolgt ausschließlich honorarbasiert — als prozentualer Anteil des verwalteten Vermögens oder als Pauschalhonorar. Keine versteckten Kosten, keine Provisionen, keine Kick-backs.
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">
+        <span class="faq-q-text">Sind meine Gelder sicher?</span>
+        <div class="faq-q-icon"><span>+</span></div>
+      </button>
+      <div class="faq-a">
+        Ihr Vermögen liegt stets auf Ihren eigenen Depots bei einer deutschen Depotbank. Wir haben nur eine Anlagevollmacht — Zugriff auf Ihre Gelder ist für uns nicht möglich. Wir sind als Finanzportfolioverwalter bei der BaFin zugelassen.
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">
+        <span class="faq-q-text">Wie läuft ein Erstgespräch ab?</span>
+        <div class="faq-q-icon"><span>+</span></div>
+      </button>
+      <div class="faq-a">
+        Das Erstgespräch ist kostenfrei und unverbindlich — persönlich in Berlin oder per Videokonferenz. Wir hören zu, stellen Fragen und erläutern unsere Arbeitsweise. Keine Produktpräsentationen, kein Verkaufsdruck.
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">
+        <span class="faq-q-text">Wie oft werde ich über mein Portfolio informiert?</span>
+        <div class="faq-q-icon"><span>+</span></div>
+      </button>
+      <div class="faq-a">
+        Sie erhalten regelmäßige schriftliche Reports sowie persönliche Quartals- oder Halbjahresgespräche. Bei bedeutenden Marktentwicklungen kommunizieren wir proaktiv — ohne auf Ihre Nachfrage zu warten.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     CONTACT
+════════════════════════════════════════════ -->
+<section class="contact" id="kontakt">
+  <div class="contact-left">
+    <div class="sec-tag reveal">Kontakt</div>
+    <h2 class="section-h2 dark reveal reveal-delay-1">
+      Sprechen<br>Sie mit<br><span class="w100d">uns.</span>
+    </h2>
+    <p class="body-dark reveal reveal-delay-2" style="margin-top:1rem;max-width:340px">
+      Wir freuen uns auf ein unverbindliches Erstgespräch — persönlich in Berlin
+      oder per Videokonferenz.
+    </p>
+    <div class="contact-details">
+      <div class="cd-row reveal reveal-delay-2">
+        <span class="cd-key">Adresse</span>
+        <span class="cd-val">Riehlstraße 3<br>14057 Berlin</span>
+      </div>
+      <div class="cd-row reveal reveal-delay-3">
+        <span class="cd-key">Inhaber</span>
+        <span class="cd-val">Stefan Affeld<br>Geschäftsführer</span>
+      </div>
+      <div class="cd-row reveal reveal-delay-4">
+        <span class="cd-key">Firma</span>
+        <span class="cd-val">Profil Vermögensmanagement GmbH</span>
+      </div>
+      <div class="cd-row reveal reveal-delay-5">
+        <span class="cd-key">E-Mail</span>
+        <span class="cd-val">info@profilberlin.de</span>
+      </div>
+    </div>
+    <div class="map-placeholder reveal" style="margin-top:2.5rem">
+      <div class="map-grid"></div>
+      <div class="map-pin">
+        <div class="map-pin-dot"></div>
+        <div class="map-pin-label">Berlin · Charlottenburg</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-right">
+    <div class="sec-tag reveal">Erstgespräch vereinbaren</div>
+    <!-- Replace action with your Formspree endpoint: https://formspree.io/f/YOUR_ID -->
+    <form class="form-group" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <div class="form-row">
+        <div class="ff reveal reveal-delay-1">
+          <label for="vorname">Vorname</label>
+          <input type="text" id="vorname" name="vorname" placeholder="Max" required>
+        </div>
+        <div class="ff reveal reveal-delay-1">
+          <label for="nachname">Nachname</label>
+          <input type="text" id="nachname" name="nachname" placeholder="Mustermann" required>
+        </div>
+      </div>
+      <div class="ff reveal reveal-delay-2">
+        <label for="email">E-Mail-Adresse</label>
+        <input type="email" id="email" name="email" placeholder="ihre@email.de" required>
+      </div>
+      <div class="ff reveal reveal-delay-2">
+        <label for="telefon">Telefon (optional)</label>
+        <input type="tel" id="telefon" name="telefon" placeholder="+49 30 ...">
+      </div>
+      <div class="ff reveal reveal-delay-3">
+        <label for="thema">Thema</label>
+        <select id="thema" name="thema">
+          <option value="">Bitte wählen</option>
+          <option>Portfolioverwaltung</option>
+          <option>Anlageberatung</option>
+          <option>Vermögensplanung</option>
+          <option>Stiftungen &amp; Institutionen</option>
+          <option>Allgemeine Anfrage</option>
+        </select>
+      </div>
+      <div class="ff reveal reveal-delay-3">
+        <label for="nachricht">Ihre Nachricht</label>
+        <textarea id="nachricht" name="nachricht" rows="4" placeholder="Kurze Beschreibung Ihres Anliegens …"></textarea>
+      </div>
+      <button type="submit" class="btn-submit reveal reveal-delay-4">Anfrage senden</button>
+      <p class="form-note reveal reveal-delay-4">Das Erstgespräch ist kostenfrei und unverbindlich.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════ -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand-col">
+      <div class="footer-brand-mark">
+        <div class="foot-logo"><span class="foot-logo-p">P</span></div>
+        <span class="foot-brand-name">Profil Vermögensmanagement</span>
+      </div>
+      <p class="footer-tagline">
+        Unabhängige Vermögensverwaltung für private und institutionelle Anleger.
+        Seit 1998 in Berlin.
+      </p>
+    </div>
+    <div>
+      <div class="footer-col-title">Navigation</div>
+      <div class="footer-col-links">
+        <a href="#philosophie">Philosophie</a>
+        <a href="#leistungen">Leistungen</a>
+        <a href="#ansatz">Ansatz</a>
+        <a href="#faq">FAQ</a>
+        <a href="#kontakt">Kontakt</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Leistungen</div>
+      <div class="footer-col-links">
+        <a href="#leistungen">Portfolioverwaltung</a>
+        <a href="#leistungen">Anlageberatung</a>
+        <a href="#leistungen">Vermögensplanung</a>
+        <a href="#leistungen">Risikoanalyse</a>
+        <a href="#leistungen">Stiftungen</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Kontakt</div>
+      <div class="footer-col-links">
+        <a href="#">Riehlstraße 3</a>
+        <a href="#">14057 Berlin</a>
+        <a href="#">info@profilberlin.de</a>
+        <a href="#kontakt">Termin vereinbaren</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2024 Profil Vermögensmanagement GmbH · Alle Rechte vorbehalten</div>
+    <div class="footer-legal">
+      <a href="#">Impressum</a>
+      <a href="#">Datenschutz</a>
+      <a href="#">AGB</a>
+    </div>
+    <div class="footer-reg">Zugelassener Finanzportfolioverwalter · BaFin-reguliert</div>
+  </div>
+</footer>
+
+<!-- ════════════════════════════════════════════
+     JAVASCRIPT
+════════════════════════════════════════════ -->
+<script>
+  /* nav scroll effect */
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  /* scroll reveal */
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
+
+  /* FAQ accordion */
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+</script>
+</body>
+</html>
