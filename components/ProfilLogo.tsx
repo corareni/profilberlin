@@ -19,43 +19,31 @@ function LogoIcon({ color, className }: { color: string; className?: string }) {
       className={className}
       aria-hidden="true"
     >
+      {/* Large arc: upper-right (49°) CW through bottom to upper-left (131°) */}
       <path
-        d="M14 40 A26 26 0 0 1 34 18"
+        d="M 55.7 21.9 A 24 24 0 1 1 24.3 21.9"
         fill="none"
         stroke={color}
-        strokeWidth="4"
+        strokeWidth="3.8"
         strokeLinecap="round"
       />
+      {/* Small top arc: upper-left (119°) CW through 12-o'clock to upper-right (61°) */}
       <path
-        d="M66 40 A26 26 0 0 0 46 18"
+        d="M 28.4 19 A 24 24 0 0 1 51.6 19"
         fill="none"
         stroke={color}
-        strokeWidth="4"
-        strokeLinecap="round"
-      />
-      <path
-        d="M14 40 A26 26 0 0 0 34 62"
-        fill="none"
-        stroke={color}
-        strokeWidth="4"
-        strokeLinecap="round"
-      />
-      <path
-        d="M66 40 A26 26 0 0 1 46 62"
-        fill="none"
-        stroke={color}
-        strokeWidth="4"
+        strokeWidth="3.8"
         strokeLinecap="round"
       />
       <text
         x="40"
-        y="46"
+        y="47"
         textAnchor="middle"
         fill={color}
         fontFamily="var(--font-montserrat), Montserrat, sans-serif"
-        fontSize="13"
-        fontWeight="800"
-        letterSpacing="0.1em"
+        fontSize="15.5"
+        fontWeight="700"
+        letterSpacing="0.13em"
       >
         PROFIL
       </text>
@@ -66,74 +54,62 @@ function LogoIcon({ color, className }: { color: string; className?: string }) {
 function LogoFull({ color, className }: { color: string; className?: string }) {
   return (
     <svg
-      viewBox="0 0 260 110"
+      viewBox="0 0 260 140"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
       aria-hidden="true"
     >
+      {/* Large arc: upper-right (49°) CW through bottom to upper-left (131°) */}
       <path
-        d="M24 48 A56 56 0 0 1 82 18"
+        d="M 156.2 19.8 A 40 40 0 1 1 103.8 19.8"
         fill="none"
         stroke={color}
-        strokeWidth="5"
+        strokeWidth="5.5"
         strokeLinecap="round"
       />
+      {/* Small top arc: upper-left (119°) CW through 12-o'clock to upper-right (61°) */}
       <path
-        d="M236 48 A56 56 0 0 0 178 18"
+        d="M 110.6 15 A 40 40 0 0 1 149.4 15"
         fill="none"
         stroke={color}
-        strokeWidth="5"
-        strokeLinecap="round"
-      />
-      <path
-        d="M24 52 A56 56 0 0 0 82 82"
-        fill="none"
-        stroke={color}
-        strokeWidth="5"
-        strokeLinecap="round"
-      />
-      <path
-        d="M236 52 A56 56 0 0 1 178 82"
-        fill="none"
-        stroke={color}
-        strokeWidth="5"
+        strokeWidth="5.5"
         strokeLinecap="round"
       />
       <text
         x="130"
-        y="54"
+        y="58"
         textAnchor="middle"
         fill={color}
         fontFamily="var(--font-montserrat), Montserrat, sans-serif"
-        fontSize="30"
-        fontWeight="800"
-        letterSpacing="0.08em"
+        fontSize="28"
+        fontWeight="700"
+        letterSpacing="0.13em"
       >
         PROFIL
       </text>
       <text
         x="130"
-        y="82"
+        y="110"
         textAnchor="middle"
         fill={color}
         fontFamily="var(--font-montserrat), Montserrat, sans-serif"
-        fontSize="9.5"
-        fontWeight="500"
-        letterSpacing="0.34em"
+        fontSize="11"
+        fontWeight="400"
+        letterSpacing="0.3em"
       >
         VERMÖGENS
       </text>
       <text
         x="130"
-        y="100"
+        y="128"
         textAnchor="middle"
         fill={color}
         fontFamily="var(--font-montserrat), Montserrat, sans-serif"
-        fontSize="9.5"
-        fontWeight="500"
+        fontSize="10"
+        fontWeight="400"
         letterSpacing="0.2em"
       >
-        MANAGEMENT • GmbH
+        MANAGEMENT · GmbH
       </text>
     </svg>
   );
@@ -146,8 +122,8 @@ const sizes = {
     lg: "h-24 w-24",
   },
   full: {
-    sm: "h-10 w-auto min-w-[120px]",
-    md: "h-12 w-auto min-w-[150px]",
+    sm: "h-12 w-auto min-w-[130px]",
+    md: "h-14 w-auto min-w-[160px]",
     lg: "h-20 w-auto min-w-[220px]",
   },
 };
