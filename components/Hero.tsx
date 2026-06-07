@@ -85,6 +85,11 @@ export default function Hero() {
             <br />
             Charakter
           </p>
+          <p className="mt-8 max-w-[280px] text-center text-[13px] font-normal leading-[1.8] text-beige-200/70">
+            Persönlich. Transparent. Provisionsfrei.
+            <br />
+            Ihr unabhängiger Partner für nachhaltige Vermögenssicherung seit 1998.
+          </p>
         </motion.div>
       </div>
 

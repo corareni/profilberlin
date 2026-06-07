@@ -19,23 +19,22 @@ function LogoIcon({ color, className }: { color: string; className?: string }) {
       className={className}
       aria-hidden="true"
     >
-      {/* Single arc with open gap at top (300° arc, 60° gap centered at 12 o'clock) */}
       <path
-        d="M 52 19.2 A 24 24 0 1 1 28 19.2"
+        d="M 49.6 20.1 A 22 22 0 1 1 30.4 20.1"
         fill="none"
         stroke={color}
-        strokeWidth="5"
+        strokeWidth="5.5"
         strokeLinecap="round"
       />
       <text
         x="40"
-        y="47"
+        y="46.5"
         textAnchor="middle"
         fill={color}
         fontFamily="var(--font-montserrat), Montserrat, sans-serif"
-        fontSize="15.5"
-        fontWeight="700"
-        letterSpacing="0.13em"
+        fontSize="14.5"
+        fontWeight="800"
+        letterSpacing="0.12em"
       >
         PROFIL
       </text>
@@ -46,52 +45,51 @@ function LogoIcon({ color, className }: { color: string; className?: string }) {
 function LogoFull({ color, className }: { color: string; className?: string }) {
   return (
     <svg
-      viewBox="0 0 260 140"
+      viewBox="0 0 220 130"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
       aria-hidden="true"
     >
-      {/* Single arc with open gap at top (300° arc, 60° gap centered at 12 o'clock) */}
       <path
-        d="M 150 15.4 A 40 40 0 1 1 110 15.4"
+        d="M 125.2 13.6 A 36 36 0 1 1 94.8 13.6"
         fill="none"
         stroke={color}
-        strokeWidth="7"
+        strokeWidth="8"
         strokeLinecap="round"
       />
       <text
-        x="130"
-        y="58"
+        x="110"
+        y="54"
         textAnchor="middle"
         fill={color}
         fontFamily="var(--font-montserrat), Montserrat, sans-serif"
-        fontSize="28"
-        fontWeight="700"
-        letterSpacing="0.13em"
+        fontSize="24"
+        fontWeight="800"
+        letterSpacing="0.12em"
       >
         PROFIL
       </text>
       <text
-        x="130"
-        y="110"
+        x="110"
+        y="100"
         textAnchor="middle"
         fill={color}
         fontFamily="var(--font-montserrat), Montserrat, sans-serif"
-        fontSize="11"
+        fontSize="9"
         fontWeight="400"
-        letterSpacing="0.3em"
+        letterSpacing="0.28em"
       >
         VERMÖGENS
       </text>
       <text
-        x="130"
-        y="128"
+        x="110"
+        y="116"
         textAnchor="middle"
         fill={color}
         fontFamily="var(--font-montserrat), Montserrat, sans-serif"
-        fontSize="10"
+        fontSize="8"
         fontWeight="400"
-        letterSpacing="0.2em"
+        letterSpacing="0.18em"
       >
         MANAGEMENT · GmbH
       </text>
@@ -107,10 +105,10 @@ const sizes = {
     xl: "h-40 w-40",
   },
   full: {
-    sm: "h-12 w-auto min-w-[130px]",
-    md: "h-14 w-auto min-w-[160px]",
-    lg: "h-20 w-auto min-w-[220px]",
-    xl: "h-28 w-auto min-w-[300px]",
+    sm: "h-10 w-auto",
+    md: "h-12 w-auto",
+    lg: "h-20 w-auto",
+    xl: "h-28 w-auto",
   },
 };
 
