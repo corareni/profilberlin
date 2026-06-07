@@ -14,13 +14,14 @@ interface ProfilLogoProps {
 function LogoIcon({ color, className }: { color: string; className?: string }) {
   return (
     <svg
-      viewBox="0 0 80 80"
+      viewBox="0 0 80 74"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
       aria-hidden="true"
     >
+      {/* Ring center at (40, 32), r=22. Text sits at ring bottom, not centered. */}
       <path
-        d="M 49.6 20.1 A 22 22 0 1 1 30.4 20.1"
+        d="M 49.6 12.2 A 22 22 0 1 1 30.4 12.2"
         fill="none"
         stroke={color}
         strokeWidth="5.5"
@@ -28,13 +29,13 @@ function LogoIcon({ color, className }: { color: string; className?: string }) {
       />
       <text
         x="40"
-        y="46.5"
+        y="53"
         textAnchor="middle"
         fill={color}
         fontFamily="var(--font-montserrat), Montserrat, sans-serif"
-        fontSize="14.5"
+        fontSize="16"
         fontWeight="800"
-        letterSpacing="0.12em"
+        letterSpacing="0.08em"
       >
         PROFIL
       </text>
@@ -50,8 +51,9 @@ function LogoFull({ color, className }: { color: string; className?: string }) {
       className={className}
       aria-hidden="true"
     >
+      {/* Ring center at (110, 40), r=35. Text sits at ring bottom. */}
       <path
-        d="M 125.2 13.6 A 36 36 0 1 1 94.8 13.6"
+        d="M 125.4 8.5 A 35 35 0 1 1 94.6 8.5"
         fill="none"
         stroke={color}
         strokeWidth="8"
@@ -59,13 +61,13 @@ function LogoFull({ color, className }: { color: string; className?: string }) {
       />
       <text
         x="110"
-        y="54"
+        y="73"
         textAnchor="middle"
         fill={color}
         fontFamily="var(--font-montserrat), Montserrat, sans-serif"
-        fontSize="24"
+        fontSize="26"
         fontWeight="800"
-        letterSpacing="0.12em"
+        letterSpacing="0.08em"
       >
         PROFIL
       </text>
@@ -99,10 +101,10 @@ function LogoFull({ color, className }: { color: string; className?: string }) {
 
 const sizes = {
   icon: {
-    sm: "h-8 w-8",
-    md: "h-10 w-10",
-    lg: "h-24 w-24",
-    xl: "h-40 w-40",
+    sm: "h-8 w-auto",
+    md: "h-10 w-auto",
+    lg: "h-24 w-auto",
+    xl: "h-40 w-auto",
   },
   full: {
     sm: "h-10 w-auto",
