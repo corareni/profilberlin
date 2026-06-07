@@ -70,41 +70,35 @@
 <main>
 
 <!-- ═══ HERO ═══ -->
-<section class="relative grid min-h-screen grid-cols-1 overflow-hidden bg-forest-800 pt-[68px] md:grid-cols-2">
+<section class="relative grid grid-cols-1 overflow-hidden bg-forest-800 pt-[68px]">
   <div class="pointer-events-none absolute inset-0 z-0 opacity-40" style="background-image:url(&quot;data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E&quot;);background-size:200px 200px" aria-hidden="true"></div>
 
-  <div class="relative z-10 flex flex-col justify-center border-beige-200/10 px-6 py-16 pb-28 md:border-r md:px-14 md:py-24 md:pb-32">
+  <div class="relative z-10 flex flex-col justify-center items-start h-[805px] px-6 py-16 pb-28 md:px-14 md:py-24 md:pb-32">
     <div class="reveal mb-10 inline-flex items-center gap-3 text-[12px] font-semibold uppercase tracking-[0.2em] text-forest-300">
       <span class="h-px w-[30px] bg-forest-300" aria-hidden="true"></span>
       Unabhängige Vermögensverwaltung · Berlin
     </div>
-    <h1 class="reveal section-heading mb-1 text-[clamp(2.8rem,4.2vw,5rem)] leading-[0.97] text-beige-100" style="transition-delay:.1s">
-      Ihr<br>Vermögen.
-      <span class="block font-normal text-beige-200/90 text-[0.85em] leading-[1.1] tracking-wide">
-        Unsere<br>Verantwortung.
-      </span>
-    </h1>
-    <div class="reveal my-8 h-px w-10 bg-forest-400" aria-hidden="true" style="transition-delay:.25s"></div>
-    <p class="reveal text-[14px] font-normal leading-[1.8] text-beige-100 mb-12 max-w-[420px]" style="transition-delay:.35s">
-      Seit über zwei Jahrzehnten betreuen wir private und institutionelle Anleger mit einem klaren Prinzip: langfristiges Denken, individuelle Lösungen, konsequentes Handeln – ohne Interessenkonflikte.
-    </p>
-    <div class="reveal flex flex-wrap items-center gap-8" style="transition-delay:.45s">
-      <a href="#kontakt" class="inline-block rounded-[30px] border-[1.5px] border-beige-200 bg-beige-200 px-[2.2rem] py-[0.85rem] text-[12px] font-bold uppercase tracking-[0.12em] text-forest-900 transition-all hover:border-beige-300 hover:bg-beige-300" aria-label="Gespräch vereinbaren">Gespräch vereinbaren</a>
-      <a href="#leistungen" class="flex items-center gap-2 text-[12px] font-semibold uppercase tracking-[0.12em] text-beige-100 transition-colors hover:text-beige-200" aria-label="Unsere Leistungen ansehen">
-        Unsere Leistungen <span aria-hidden="true">→</span>
-      </a>
-    </div>
-  </div>
-
-  <div class="relative z-10 hidden flex-col items-center justify-center px-6 md:flex md:px-14">
-    <div class="reveal flex flex-col items-center" style="transition-delay:.2s">
-      <img src="/logo.png" alt="" class="h-[10rem] w-auto object-contain brightness-0 invert" aria-hidden="true">
-      <p class="mt-12 text-center text-[12px] font-semibold uppercase leading-[2.1] tracking-[0.18em] text-beige-200/90">
-        Vermögensmanagement<br>mit Berliner<br>Charakter
-      </p>
-      <p class="mt-8 max-w-[280px] text-center text-[13px] font-normal leading-[1.8] text-beige-200/70">
-        Persönlich. Transparent. Provisionsfrei.<br>Ihr unabhängiger Partner für nachhaltige Vermögenssicherung seit 1998.
-      </p>
+    <div class="flex flex-col gap-12 md:flex-row md:items-end md:gap-20">
+      <div class="flex-1">
+        <h1 class="reveal section-heading mb-1 text-[clamp(2.8rem,4.2vw,5rem)] leading-[0.97] text-beige-100" style="transition-delay:.1s">
+          Ihr<br>Vermögen.
+          <span class="block font-normal text-beige-200/90 text-[0.85em] leading-[1.1] tracking-wide">
+            Unsere<br>Verantwortung.
+          </span>
+        </h1>
+      </div>
+      <div class="flex-1 md:max-w-[480px]">
+        <div class="reveal h-px w-10 bg-forest-400 mb-8 md:hidden" aria-hidden="true" style="transition-delay:.25s"></div>
+        <p class="reveal text-[14px] font-normal leading-[1.8] text-beige-100 mb-12 max-w-[420px]" style="transition-delay:.35s">
+          Seit über zwei Jahrzehnten betreuen wir private und institutionelle Anleger mit einem klaren Prinzip: langfristiges Denken, individuelle Lösungen, konsequentes Handeln – ohne Interessenkonflikte.
+        </p>
+        <div class="reveal flex flex-wrap items-center gap-8" style="transition-delay:.45s">
+          <a href="#kontakt" class="inline-grid rounded-[30px] border-[1.5px] border-beige-200 bg-beige-200 px-[2.2rem] py-[0.85rem] text-[12px] font-bold uppercase tracking-[0.12em] text-forest-900 transition-all hover:border-beige-300 hover:bg-beige-300" aria-label="Gespräch vereinbaren">Gespräch vereinbaren</a>
+          <a href="#leistungen" class="flex items-center gap-2 text-[12px] font-semibold uppercase tracking-[0.12em] text-beige-100 transition-colors hover:text-beige-200" aria-label="Unsere Leistungen ansehen">
+            Unsere Leistungen <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -342,7 +336,7 @@
     </div>
   </div>
   <div class="hidden flex-col items-center justify-center gap-10 px-8 py-16 text-center md:flex">
-    <div class="reveal"><img src="/logo.png" alt="" class="h-[6rem] w-auto object-contain brightness-0 invert" aria-hidden="true"></div>
+    <div class="reveal"><img src="/logo.png" alt="" class="h-[10rem] w-auto object-contain brightness-0 invert" aria-hidden="true"></div>
     <p class="reveal text-[11px] font-semibold uppercase leading-[1.9] tracking-[0.14em] text-beige-200/90" style="transition-delay:.2s">Vermögensmanagement<br>mit Berliner<br>Charakter</p>
   </div>
 </section>
@@ -491,10 +485,10 @@ Geschäftsführer</span></div>
 </main>
 
 <!-- ═══ FOOTER ═══ -->
-<footer class="border-t border-beige-200/20 bg-forest-900 px-6 py-16 md:px-14">
+<footer class="border-t border-beige-200/20 bg-forest-900 px-4 py-16 md:px-10">
   <div class="grid grid-cols-1 gap-10 border-b border-beige-200/20 pb-12 md:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr] lg:gap-16">
     <div>
-      <a href="/" class="inline-flex shrink-0 mb-5" aria-label="Startseite"><img src="/logo.png" alt="Profil Vermögensmanagement GmbH" class="h-[2.5rem] w-auto object-contain brightness-0 invert"></a>
+      <a href="/" class="inline-flex shrink-0 mb-5" aria-label="Startseite"><img src="/logo.png" alt="Profil Vermögensmanagement GmbH" class="h-[4rem] w-auto object-contain brightness-0 invert"></a>
       <p class="max-w-[300px] text-[13px] font-normal leading-[1.75] text-beige-200/90">Unabhängige Vermögensverwaltung für private und institutionelle Anleger. Seit 1998 in Berlin.</p>
     </div>
     <div>
